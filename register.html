@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Day 1</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div style="float:left;">
+                <img src="strawberry.png" alt="Sitename" style="height:40px;">
+            </div>
+            <div style="float:right;">
+                <a href="login.html">Login</a> | <a href="register.html">Signup</a>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    
+    <div id="topnav">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <a href="https://www.santoshkshirsagar.com">About</a>
+            <a href="#">Services</a>
+            <a href="contact.html">Contact</a>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <div style="min-height:300px;">
+        <div class="container">
+            <h1>Register</h1>
+            <form action="index.html">
+                <div class="form-field">
+                    Name <br/>
+                    <input type="text" name="name"> 
+                </div>
+                <div class="form-field">
+                    Email <br/>
+                    <input type="email" name="email"> <br/>
+                </div>
+                <div class="form-field">
+                    Passsword <br/>
+                    <input type="password" name="password"> <br/>
+                </div>
+
+                <div class="form-field">
+                    Gender <br/>
+                    <select name="gender" id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br/><br/>
+                    <input type="radio" name="sex" id="sex_male" value="Male"> 
+                    <label for="sex_male">Male</label>
+                    <br/>
+                    
+                    <input type="radio" name="sex" id="sex_female" value="Female"> 
+                    <label for="sex_female">Female</label>
+
+                </div>
+                <div class="form-field">
+                    Languages <br/>
+                    <input type="checkbox" name="lang" id="english">
+                    <label for="english">English</label><br/>
+                    <input type="checkbox" name="lang" id="hindi">
+                    <label for="hindi">Hindi</label><br/>
+                    <input type="checkbox" name="lang" id="marathi">
+                    <label for="marathi">Marathi</label><br/>
+                </div>
+
+                
+                <div class="form-field">
+                    Age <br/>
+                    <input type="number" name="age"> <br/>
+                </div>
+                
+                <div class="form-field">
+                    DOB <br/>
+                    <input type="date" name="dob"> <br/>
+                </div>
+
+                <input type="search" name="search" id="search"><br/>
+                <input type="file"><br/>
+                <input type="submit" value="Signup">
+            </form>
+
+        </div>
+    </div>
+    <div style="border-top:1px solid silver;color:#6e6565; padding:20px 0px;text-align:center;">
+        &copy; Copyright 2020 | About | Contact | Terms | Privacy Policy
+    </div>
+</body>
+</html>
