@@ -3,6 +3,8 @@ body{margin:auto;font-family: verdana;}
 a{text-decoration: none;}
 p{font-size: 40px;text-decoration: underline;color:blue;}
 
+.clearfix{clear:both;}
+
 #para1{font-size:20px;}
 .para{font-size:60px;}
 
@@ -12,7 +14,16 @@ p{font-size: 40px;text-decoration: underline;color:blue;}
 
 .container{width:90%;margin:auto;}
 
-#header{background-color: blue;height: 40px;}
+#header{background-color: blue;height: 46px;}
 
 #header a{line-height:40px;color:#fff;}
 .form-field{margin-bottom:10px;}
+
+.table{width: 100%;border-collapse: collapse;}
+.table td,.table th{border:1px solid silver;padding:6px;}
+.table th{text-align: left;}
+
+ul.nav{list-style-type: none;}
+ul.nav li{float: left; display: block; }
+ul.nav li a{background-color: #1a1919;color: #fff; padding:6px 10px;}
+ul.nav li a:hover{background-color:gold;color: #3b3b3b; padding:6px 10px;}
