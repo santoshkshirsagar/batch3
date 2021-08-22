@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .p60,.p40{height: 300px;color:#fff;padding:10px;}
+        .p60,.p40{width: 100%;background-color: greenyellow;}
+
+        .col25{width:100%;height:100px;border:1px solid red;float:left}
+
+        @media screen and (min-width:600px) {
+            .col25{width:50%}
+            #topnav a{float:left;}
+            .p60{width:60%;background-color: #1a1919;float:left;}
+            .p40{width:40%;background-color: green;float:right;}
+        }
+
+        @media screen and (min-width:1080px) {
+            .col25{width:25%}
+            .p60{background-color: #8d1212;}
+            .p40{background-color: rgb(94, 48, 131);}
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Welcome</h1>
+        <div class="p60">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
+        </div>
+        <div class="p40">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eos accusamus rem voluptate neque in expedita laudantium aperiam! Amet, ab magnam odio vero id esse nemo laborum excepturi deleniti fugiat! 
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col25">1</div>
+    <div class="col25">2</div>
+    <div class="col25">3</div>
+    <div class="col25">4</div>
+
+</body>
+</html>
