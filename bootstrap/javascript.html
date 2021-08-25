@@ -72,8 +72,20 @@
       <div class="container py-5">
         <div class="row">
            <div class="col">
+                <!-- <h2>This block is in comment</h2> -->
                 <h1 id="heading1">Welcome</h1>
-                <button onclick="addClick()">Click Add</button>
+                <button class="btn btn-primary" onclick="addClick()">Click Add</button>
+
+           </div>
+           <div class="col">
+             <div class="mb-3">
+               <label for="number">Enter any number</label>
+               <input type="text" name="number" id="number" onkeyup="showText(this.value)" class="form-control">
+               <span id="error" class="text-danger"></span>
+             </div>
+             <button onclick="calculateSquare()" class="btn btn-secondary btn-sm">Test</button>
+             
+             <a onclick="calculateLength()" class="btn btn-secondary btn-sm">Calculate</a>
            </div>
         </div>
       </div>
@@ -90,6 +102,50 @@
             clickCount = clickCount + 1;
             document.getElementById('heading1').innerHTML = clickCount;
         }
+
+        var arr=['hp','lenovo', 'asus','acer','apple'];
+        for(var count=0;count<arr.length;count++){
+          document.getElementById('heading1').innerHTML += "<br/>"+arr[count];
+        }
+
+        function calculateSquare(){
+           var input = document.getElementById('number').value;
+           var element = document.getElementById('number');
+           if(isNaN(input)){
+              document.getElementById('error').innerHTML="Please enter number";
+              element.classList.add("is-invalid");
+           }else{
+              var square = input * input;
+              element.classList.remove("is-invalid");
+              document.getElementById('error').innerHTML="Square is :"+square;
+           }
+        }
+
+        function calculateLength(){
+           var input = document.getElementById('number').value;
+            alert(input.length);
+        }
+
+        function showText(str){
+          var newstr = str.replaceAll("a","b");
+          document.getElementById('error').innerHTML= "Your text :<b>"+str+"</b>,<br/> Length ="+str.length+"<br/> replaced text:"+newstr;
+        }
+
+        // student can refer this function for basic understanding
+        /* if(arr.length==7){
+            alert('length is 7');
+        }else{
+            alert('length is not 7');
+        }
+
+        var i=0;
+        while(i<4){
+          alert(i);
+          i= i + 1;
+        } */
+
+        
+
     </script>
   </body>
 </html>
