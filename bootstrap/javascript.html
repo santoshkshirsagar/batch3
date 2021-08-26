@@ -86,6 +86,14 @@
              <button onclick="calculateSquare()" class="btn btn-secondary btn-sm">Test</button>
              
              <a onclick="calculateLength()" class="btn btn-secondary btn-sm">Calculate</a>
+
+             <div class="my-4">
+              <a onclick="getData()" class="btn btn-info">Get Data</a>
+             </div>
+             <div id="ajax_data">
+
+             </div>
+             
            </div>
         </div>
       </div>
@@ -144,7 +152,17 @@
           i= i + 1;
         } */
 
-        
+        function getData() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              var object = JSON.parse(this.responseText);
+              document.getElementById("ajax_data").innerHTML = "Lang :"+object.language+"<br/>Course : "+object.course;
+            }
+          };
+          xhttp.open("GET", "ajax_sample.txt", true);
+          xhttp.send();
+        }
 
     </script>
   </body>
