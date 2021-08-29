@@ -25,3 +25,16 @@ echo "-------foreach----------<br/>";
 foreach($array as $name){
     echo $name."<br/>";
 }
+
+
+
+function calculateSum($a, $b){
+    // function is set of multiple line code
+    return $sum = $a+$b;
+}
+
+echo calculateSum(3,6);
+echo "<br/>";
+echo calculateSum(32,8);
+echo "<br/>";
+echo calculateSum(56,9);
