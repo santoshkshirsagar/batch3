@@ -60,29 +60,26 @@
 
         <h4>Latest Recipe</h4>
         <div class="row  row-cols-1 row-cols-sm-2 row-cols-md-4">
-          <div class="col mb-3">
-            <img src="https://source.unsplash.com/300x240/?food" alt="" class="w-100 rounded">
-            <h5>Recipe 1</h5>
-            <small>Category</small>
-          </div>
-          
-          <div class="col mb-3">
-            <img src="https://source.unsplash.com/300x240/?food" alt="" class="w-100 rounded">
-            <h5>Recipe 1</h5>
-            <small>Category</small>
-          </div>
-          
-          <div class="col mb-3">
-            <img src="https://source.unsplash.com/300x240/?food" alt="" class="w-100 rounded">
-            <h5>Recipe 1</h5>
-            <small>Category</small>
-          </div>
-          
-          <div class="col mb-3">
-            <img src="https://source.unsplash.com/300x240/?food" alt="" class="w-100 rounded">
-            <h5>Recipe 1</h5>
-            <small>Category</small>
-          </div>
+
+
+        <?php
+        include('inc/db.php');
+        $sql = "SELECT id,title,category FROM recipes";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            ?>
+            <div class="col mb-3">
+              <img src="https://source.unsplash.com/300x240/" alt="" class="w-100 rounded">
+              <h5><?php echo $row['title']; ?></h5>
+              <small><?php echo $row['category']; ?></small>
+            </div>
+            <?php
+          }
+        }
+        ?>
         </div>
       </div>
 <?php include('footer.php'); ?> 
