@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,7 +28,17 @@
                     <a href="index.php">Foodhours</a>
                 </div> 
                 <div class="col text-end  py-3">
-                    Login | Signup
+                    <?php
+                    if(isset($_SESSION['userId'])){
+                      ?>
+                      Welcome <?php echo $_SESSION['userName']; ?> | <a href="logout.php">Logout</a>
+                      <?php
+                    }else{
+                      ?>
+                      <a href="login.php">Login</a> | <a href="register.php">Signup</a>
+                      <?php
+                    }
+                    ?>
                 </div> 
           </div>
       </div>
