@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +21,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::paginate(10);
-        return view('category.index', compact('categories'));
+        $pages = Page::paginate(10);
+        return view('page.index', compact('pages'));
     }
 
     /**
@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('category.create');
+        return view('page.create');
     }
 
     /**
@@ -49,18 +49,19 @@ class CategoryController extends Controller
         $validated= $request->validate([
             "name"=>"required",
             "description"=>"required",
+            "content"=>"required",
         ]);
-        Category::create($validated);
-        return redirect(route('category.index'))->with('alert-success','Category has been created successfully');
+        Page::create($validated);
+        return redirect(route('page.index'))->with('alert-success','Page has been created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Page $page)
     {
         //
     }
@@ -68,44 +69,46 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Page $page)
     {
         //
-        return view('category.edit', compact('category'));
+        return view('page.edit', compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Page $page)
     {
         //
         $validated= $request->validate([
-            "name"=>"required"
+            "name"=>"required",
+            "description"=>"required",
+            "content"=>"required",
         ]);
-        $category->update($validated);
-        /* $category->name=$request->name;
-        $category->save(); */
-        return redirect(route('category.index'))->with('alert-success','Category has been updated successfully');
+        $page->update($validated);
+        /* $page->name=$request->name;
+        $page->save(); */
+        return redirect(route('page.index'))->with('alert-success','Page has been updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Page $page)
     {
         //
-        $category->delete();
-        return redirect(route('category.index'))->with('alert-success','Category has been deleted successfully');
+        $page->delete();
+        return redirect(route('page.index'))->with('alert-success','Page has been deleted successfully');
     }
 }

@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
-
+}); */
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('recipe','App\Http\Controllers\RecipeController');
 
-
-
-Route::get('/recipe/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('recipe.create');
-Route::post('/recipe', [App\Http\Controllers\RecipeController::class, 'store'])->name('recipe.store');
+Route::prefix('admin')->group(function () {
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('user','App\Http\Controllers\UserController');
+    Route::resource('category','App\Http\Controllers\CategoryController');
+    Route::resource('page','App\Http\Controllers\PageController');
+});

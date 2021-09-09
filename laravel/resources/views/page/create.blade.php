@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('content')
+@section('admin-content')
 <div class="container py-4">
     <div class="row">
         <div class="col-md-6">
-            <h1>Create Recipe</h1>
-            <form action="{{ route('recipe.store') }}" method="post" enctype="multipart/form-data">
+            <h1>Create Page</h1>
+            <form action="{{ route('page.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name">Name</label>
@@ -22,21 +22,9 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="image">Image</label>
-                    <input type="file" name="image" id="image" class="form-control" value="{{ old('image') }}">
-                    @error('image')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="category">Category</label>
-                    <select name="category_id" id="category_id" class="form-control">
-                        <option value="">Select Category</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('category_id')
+                    <label for="content">Content</label>
+                    <textarea name="content" id="content" class="form-control">{{ old('content') }}</textarea>
+                    @error('content')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>

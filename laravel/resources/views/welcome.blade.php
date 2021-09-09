@@ -81,28 +81,13 @@
 
         <h4>Latest Recipe</h4>
         <div class="row  row-cols-1 row-cols-sm-2 row-cols-md-4">
-
-
-                    <div class="col mb-3">
-              <img src="https://source.unsplash.com/300x240/" alt="" class="w-100 rounded">
-              <h5>Paneer Tikka Masala</h5>
-              <small>Main Course</small>
+          @foreach($latest as $recipe)
+            <div class="col mb-3">
+              <img src="{{ asset('storage/'.$recipe->image) }}" alt="" class="w-100 rounded">
+              <h5><a href="{{ route('recipe.show',['recipe'=>$recipe->id]) }}">{{ $recipe->name }}</a></h5>
+              <small>{{ $recipe->category->name }}</small>
             </div>
-                        <div class="col mb-3">
-              <img src="https://source.unsplash.com/300x240/" alt="" class="w-100 rounded">
-              <h5>Rajma Masala</h5>
-              <small>Main Course</small>
-            </div>
-                        <div class="col mb-3">
-              <img src="https://source.unsplash.com/300x240/" alt="" class="w-100 rounded">
-              <h5>Idli</h5>
-              <small></small>
-            </div>
-                        <div class="col mb-3">
-              <img src="https://source.unsplash.com/300x240/" alt="" class="w-100 rounded">
-              <h5>Idli</h5>
-              <small></small>
-            </div>
-                    </div>
+          @endforeach
+        </div>
       </div>
 @endsection

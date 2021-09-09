@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RecipePublished;
 
 class RecipeController extends Controller
 {
@@ -16,6 +18,9 @@ class RecipeController extends Controller
     public function index()
     {
         //
+        $limit = 10;
+        $recipes=Recipe::paginate($limit);
+        return view('recipe.index', compact('recipes'));
     }
 
     /**
@@ -42,10 +47,13 @@ class RecipeController extends Controller
         $validated = $request->validate([
             "name"=>"required|max:40",
             "description"=>"required",
+            "image"=>"required|image",
             "category_id"=>"required",
         ]);
-        Recipe::create($validated);
-        return redirect(route('recipe.create'))->with('alert-success','Recipe has been added successfully');
+        $validated['image'] = $request->file('image')->store('recipes','public');
+        $recipe = Recipe::create($validated);
+        Mail::to(\Auth::user())->send(new RecipePublished($recipe));
+        return redirect(route('recipe.index'))->with('alert-success','Recipe has been added successfully');
     }
 
     /**
@@ -57,6 +65,7 @@ class RecipeController extends Controller
     public function show(Recipe $recipe)
     {
         //
+        return view('recipe.show', compact('recipe'));
     }
 
     /**
@@ -68,6 +77,8 @@ class RecipeController extends Controller
     public function edit(Recipe $recipe)
     {
         //
+        $categories = Category::get();
+        return view('recipe.edit', compact('recipe','categories'));
     }
 
     /**
@@ -80,6 +91,19 @@ class RecipeController extends Controller
     public function update(Request $request, Recipe $recipe)
     {
         //
+        $validated = $request->validate([
+            "name"=>"required|max:40",
+            "description"=>"required",
+            "category_id"=>"required",
+        ]);
+        if($request->file('image')){
+            $request->validate([
+                "image"=>"image",
+            ]);
+            $validated['image'] = $request->file('image')->store('recipes','public');
+        }
+        $recipe->update($validated);
+        return redirect(route('recipe.index'))->with('alert-success','Recipe has been updated successfully');
     }
 
     /**
@@ -91,5 +115,7 @@ class RecipeController extends Controller
     public function destroy(Recipe $recipe)
     {
         //
+        $recipe->delete();
+        return redirect(route('recipe.index'))->with('alert-success','Recipe has been deleted successfully');
     }
 }
