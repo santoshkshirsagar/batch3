@@ -14,4 +14,8 @@ class Recipe extends Model
     {
         return $this->belongsTo(\App\Models\Category::class);
     }
+    public function fetured()
+    {
+        return $this->hasOne(\App\Models\Featured::class);
+    }
 }
