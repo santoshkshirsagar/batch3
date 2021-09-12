@@ -9,7 +9,7 @@
                     <a class="nav-link @if(route('home')==url()->current()) active @endif" aria-current="page" href="{{ route('home') }}">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(route('recipe.index')==url()->current()) active @endif" href="{{ route('recipe.index') }}">My Receipes</a>
+                    <a class="nav-link @if(route('recipe.index')==url()->current()) active @endif" href="{{ route('recipe.index') }}">My Recipes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Change Password</a>

@@ -17,7 +17,9 @@
         <div class="carousel-inner">
           @foreach($banners as $banner)
             <div class="carousel-item @if($loop->first) active @endif">
-              <img src="{{ asset('storage/'.$banner->image) }}" class="d-block w-100" alt="...">
+              <a href="{{ $banner->link }}">
+                <img src="{{ asset('storage/'.$banner->image) }}" class="d-block w-100" alt="...">
+              </a>
             </div>
           @endforeach
           <!-- <div class="carousel-item active">
@@ -49,53 +51,15 @@
       <div class="container py-5">
         <h4>Featured Recipe</h4>
         <div class="row mb-5 row-cols-1 row-cols-sm-2 row-cols-md-4">
-                    <div class="col">
-                <div class="card mb-3">
-                <img src="https://source.unsplash.com/300x240/?food" class="card-img-top" alt="food">
-                <div class="card-body">
-                    <h5><a href="recipe.html">Recipe 1</a></h5>
-                    <small>Category</small>
-                </div>
-                </div>
-            </div>
-                        <div class="col">
-                <div class="card mb-3">
-                <img src="https://source.unsplash.com/300x240/?nature" class="card-img-top" alt="food">
-                <div class="card-body">
-                    <h5><a href="recipe.html">Recipe 2</a></h5>
-                    <small>Category</small>
-                </div>
-                </div>
-            </div>
-                        <div class="col">
-                <div class="card mb-3">
-                <img src="https://source.unsplash.com/300x240/?kitchen" class="card-img-top" alt="food">
-                <div class="card-body">
-                    <h5><a href="recipe.html">Recipe 3</a></h5>
-                    <small>Category</small>
-                </div>
-                </div>
-            </div>
-                        <div class="col">
-                <div class="card mb-3">
-                <img src="https://source.unsplash.com/300x240/?city" class="card-img-top" alt="food">
-                <div class="card-body">
-                    <h5><a href="recipe.html">Recipe 4</a></h5>
-                    <small>Category</small>
-                </div>
-                </div>
-            </div>
-                      
+          @foreach($featured as $row)
+            @livewire('recipe.card', ['recipe'=>$row->recipe])
+          @endforeach
         </div>
 
         <h4>Latest Recipe</h4>
         <div class="row  row-cols-1 row-cols-sm-2 row-cols-md-4">
           @foreach($latest as $recipe)
-            <div class="col mb-3">
-              <img src="{{ asset('storage/'.$recipe->image) }}" alt="" class="w-100 rounded">
-              <h5><a href="{{ route('recipe.show',['recipe'=>$recipe->id]) }}">{{ $recipe->name }}</a></h5>
-              <small>{{ $recipe->category->name }}</small>
-            </div>
+            @livewire('recipe.card', ['recipe'=>$recipe])
           @endforeach
         </div>
       </div>

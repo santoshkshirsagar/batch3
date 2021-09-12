@@ -4,6 +4,9 @@
 <div class="container py-4">
     <div class="row">
         <div class="col-md-6">
+
+            @livewire('page.form')
+
             <h1>Create Page</h1>
             <form action="{{ route('page.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
