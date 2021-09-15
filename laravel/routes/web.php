@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('recipe','App\Http\Controllers\RecipeController');
 
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile');
+
 Route::prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('user','App\Http\Controllers\UserController');

@@ -15,7 +15,7 @@
                     <a class="nav-link" href="#">Change Password</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Profile</a>
+                    <a class="nav-link @if(route('profile')==url()->current()) active @endif" href="{{ route('profile') }}">My Profile</a>
                 </li>
             </ul>
         </div>
