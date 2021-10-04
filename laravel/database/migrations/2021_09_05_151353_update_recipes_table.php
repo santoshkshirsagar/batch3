@@ -16,12 +16,11 @@ class UpdateRecipesTable extends Migration
         //
         Schema::table('recipes', function (Blueprint $table) {
             $table->string('image')->nullable();
-            $table->string('prep_time')->nullable();
-            $table->string('cook_time')->nullable();
-            $table->string('total_time')->nullable();
-            $table->string('serves')->nullable();
-            $table->string('materials')->nullable();
-            $table->string('preparation')->nullable();
+            $table->integer('prep_time')->nullable();
+            $table->integer('cook_time')->nullable();
+            $table->integer('serves')->nullable();
+            $table->text('ingredients')->nullable();
+            $table->text('preparation')->nullable();
             $table->string('video')->nullable();
             $table->timestamp('published_at')->nullable();
         });

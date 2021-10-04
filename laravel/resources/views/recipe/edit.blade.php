@@ -42,9 +42,40 @@
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
+                
+                <div class="mb-3">
+                    <label for="ingredients">Ingredients</label>
+                    <textarea type="text" name="ingredients" id="ingredients" class="form-control editor" value="{{ $recipe->ingredients }}"></textarea>
+                    @error('ingredients')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="preparation">Preparation</label>
+                    <textarea type="text" name="preparation" id="preparation" class="form-control editor" value="{{ $recipe->preparation }}"></textarea>
+                    @error('preparation')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                
+
                 <input type="submit" value="submit" class="btn btn-primary">
             </form>
         </div>
     </div>
 </div>
+<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+<script>
+    var editors = document.getElementsByClassName("editor");
+    for (var i = 0; i < editors.length; i++) {
+        ClassicEditor
+        .create( editors.item(i) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+    }
+</script>
 @endsection

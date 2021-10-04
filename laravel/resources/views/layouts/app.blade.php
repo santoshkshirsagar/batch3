@@ -93,8 +93,11 @@
             @yield('content')
         </main>
         <footer>
-            <div id="footer" class="text-center">
-                About | Contact | Terms & Conditions | Privacy Policy
+            <div id="footer" class="text-center border-top py-2 bg-light">
+                <a href="{{ route('page.view', ['page'=>'about']) }}">About</a> | 
+                <a href="{{ route('page.view', ['page'=>'contact']) }}">Contact</a> | 
+                <a href="{{ route('page.view', ['page'=>'terms']) }}">Terms & Conditions</a> | 
+                <a href="{{ route('page.view', ['page'=>'privacy-policy']) }}">Privacy Policy</a>
             </div>
         </footer>
     </div>

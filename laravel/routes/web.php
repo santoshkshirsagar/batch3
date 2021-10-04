@@ -22,6 +22,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('recipe','App\Http\Controllers\RecipeController');
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile');
+Route::get('/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('password');
+
+Route::get('p/{page}', function ($page) {
+    return view('pages.'.$page);
+})->name('page.view');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');

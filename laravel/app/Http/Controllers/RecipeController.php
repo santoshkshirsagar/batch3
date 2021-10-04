@@ -48,11 +48,13 @@ class RecipeController extends Controller
             "name"=>"required|max:40",
             "description"=>"required",
             "image"=>"required|image",
+            "ingredients"=>"required",
+            "preparation"=>"required",
             "category_id"=>"required",
         ]);
         $validated['image'] = $request->file('image')->store('recipes','public');
         $recipe = Recipe::create($validated);
-        Mail::to(\Auth::user())->send(new RecipePublished($recipe));
+        //Mail::to(\Auth::user())->send(new RecipePublished($recipe));
         return redirect(route('recipe.index'))->with('alert-success','Recipe has been added successfully');
     }
 
@@ -94,6 +96,8 @@ class RecipeController extends Controller
         $validated = $request->validate([
             "name"=>"required|max:40",
             "description"=>"required",
+            "ingredients"=>"required",
+            "preparation"=>"required",
             "category_id"=>"required",
         ]);
         if($request->file('image')){

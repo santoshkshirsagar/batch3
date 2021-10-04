@@ -12,7 +12,7 @@
                     <a class="nav-link @if(route('recipe.index')==url()->current()) active @endif" href="{{ route('recipe.index') }}">My Recipes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Change Password</a>
+                    <a class="nav-link" href="{{ route('password') }}">Change Password</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if(route('profile')==url()->current()) active @endif" href="{{ route('profile') }}">My Profile</a>
